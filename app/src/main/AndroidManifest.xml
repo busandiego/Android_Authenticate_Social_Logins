@@ -21,10 +21,6 @@
             </intent-filter>
         </activity>
 
-        <meta-data
-            android:name="com.kakao.sdk.AppKey"
-            android:value="50f5a074179904c6fdb5c13bc55f7d53"/>
-
     </application>
 
 </manifest>
