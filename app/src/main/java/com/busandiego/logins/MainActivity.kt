@@ -9,7 +9,11 @@ import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import com.navercorp.nid.NaverIdLoginSDK
+import com.navercorp.nid.oauth.NidOAuthLogin
+import com.navercorp.nid.oauth.NidOAuthLoginState
 import com.navercorp.nid.oauth.OAuthLoginCallback
+import com.navercorp.nid.profile.NidProfileCallback
+import com.navercorp.nid.profile.data.NidProfileResponse
 
 class MainActivity : AppCompatActivity() {
     private val TAG = "MainActivity"
@@ -17,14 +21,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
+        if (NidOAuthLoginState.OK.equals(NaverIdLoginSDK.getState())){
+            Log.d(TAG, "NidOAuthLoginState.OK >>>>")
+        }
+
         val naverButton = findViewById<Button>(R.id.naver_button)
         naverButton.setOnClickListener {
             NaverIdLoginSDK.authenticate(
                 this, callback = naverLoginCallback
             )
         }
-
-
     }
 
     /**
@@ -40,18 +47,41 @@ class MainActivity : AppCompatActivity() {
            Log.d(TAG, "NaverIdLoginSDK.getExpiresAt().toString() >>> ${NaverIdLoginSDK.getExpiresAt().toString()}")
            Log.d(TAG, "NaverIdLoginSDK.getTokenType() >>> ${NaverIdLoginSDK.getTokenType()}")
            Log.d(TAG, "NaverIdLoginSDK.getState().toString() >>> ${NaverIdLoginSDK.getState().toString()}")
+
+            NidOAuthLogin().callProfileApi(nidProfileCallback)
         }
 
-        override fun onError(errorCode: Int, message: String) {
+        override fun onFailure(httpStatus: Int, message: String) {
             val errorCode = NaverIdLoginSDK.getLastErrorCode().code
             val errorDescription = NaverIdLoginSDK.getLastErrorDescription()
             Toast.makeText(applicationContext,"errorCode:$errorCode, errorDesc:$errorDescription",Toast.LENGTH_SHORT).show()
         }
 
-        override fun onFailure(errorCode: Int, message: String) {
+        override fun onError(errorCode: Int, message: String) {
             onFailure(errorCode, message)
         }
 
+
+
+        val nidProfileCallback = object: NidProfileCallback<NidProfileResponse> {
+            override fun onSuccess(result: NidProfileResponse) {
+                Log.d(TAG, "result.message >>> ${result.message}")
+                Log.d(TAG, "result.profile >>> ${result.profile}")
+                Log.d(TAG, "result.resultCode >>> ${result.resultCode}")
+            }
+
+            override fun onFailure(httpStatus: Int, message: String) {
+                val errorCode = NaverIdLoginSDK.getLastErrorCode().code
+                val errorDescription = NaverIdLoginSDK.getLastErrorDescription()
+                Toast.makeText(applicationContext,"errorCode:$errorCode, errorDesc:$errorDescription",Toast.LENGTH_SHORT).show()
+            }
+
+
+            override fun onError(errorCode: Int, message: String) {
+                onFailure(errorCode, message)
+            }
+
+        }
 
     }
 }
