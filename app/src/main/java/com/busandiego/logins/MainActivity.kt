@@ -24,6 +24,11 @@ class MainActivity : AppCompatActivity() {
 
         if (NidOAuthLoginState.OK.equals(NaverIdLoginSDK.getState())){
             Log.d(TAG, "NidOAuthLoginState.OK >>>>")
+            // OK: 접근 토큰이 있는 상태.
+            // 단, 사용자가 네이버의 내정보 > 보안설정 > 외부 사이트 연결 페이지에서 연동을 해제했다면
+            // 서버에서는 상태 값이 유효하지 않을 수 있습니다.
+            // 에러 처리 확인 -> OK로 떨어짐
+            // NidOAuthLoginState
         }
 
         val naverButton = findViewById<Button>(R.id.naver_button)
