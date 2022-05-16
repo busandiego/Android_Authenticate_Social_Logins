@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">social_logins</string>
+
+    <string name="naver_client_id">qwwnKu_muNTlEdX47JOm</string>
+    <string name="naver_client_secert">qkrCog2UI4</string>
+    <string name="naver_client_name">social_logins</string>
 </resources>
