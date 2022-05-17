@@ -56,8 +56,15 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:4.2.1'
     implementation 'com.airbnb.android:lottie:3.1.0'
 
-  //  implementation "com.kakao.sdk:v2-user:2.9.0" // 카카오 로그인
+    //  implementation "com.kakao.sdk:v2-user:2.9.0" // 카카오 로그인
     implementation 'com.navercorp.nid:oauth:5.1.0' // jdk 11 네이버 로그인 (groovy)
     // implementation project(path: ':oauth-5.1.0')
     // implementation 'com.navercorp.nid:oauth-jdk8:5.1.0' // jdk 8
+    implementation platform('com.google.firebase:firebase-bom:30.0.1')
+    implementation 'com.google.firebase:firebase-analytics-ktx'
+
+    // Declare the dependency for the Firebase SDK for Google Analytics
+    implementation 'com.google.firebase:firebase-auth-ktx'
 }
+
+apply plugin: 'com.google.gms.google-services'

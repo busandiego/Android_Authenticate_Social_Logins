@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "813585541116",
+    "project_id": "sociallogins-46cb7",
+    "storage_bucket": "sociallogins-46cb7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:813585541116:android:a31285bffea186ab2af479",
+        "android_client_info": {
+          "package_name": "com.busandiego.logins"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "813585541116-kqq5hpaf0p60t1b18nu90it71lknra4p.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.busandiego.logins",
+            "certificate_hash": "f24db8250db12dbb0f965c661795e0139b48befc"
+          }
+        },
+        {
+          "client_id": "813585541116-b34ioq14n6orf14oh1074jmshutv9ngt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCIwDIj1A7tTlF136wEqLBCABwFa3Rs6OI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "813585541116-b34ioq14n6orf14oh1074jmshutv9ngt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
